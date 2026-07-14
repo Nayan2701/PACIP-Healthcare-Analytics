@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import snowflake.connector
 import pandas as pd
 import plotly.express as px
@@ -16,9 +17,9 @@ st.set_page_config(
 @st.cache_resource
 def get_connection():
     return snowflake.connector.connect(
-        user=st.secrets["snowflake"]["user"],
-        password=st.secrets["snowflake"]["password"],
-        account=st.secrets["snowflake"]["account"],
+        user=os.environ.get("SNOWFLAKE_USER", st.secrets.get("snowflake", {}).get("user", "")),
+        password=os.environ.get("SNOWFLAKE_PASSWORD", st.secrets.get("snowflake", {}).get("password", "")),
+        account=os.environ.get("SNOWFLAKE_ACCOUNT", st.secrets.get("snowflake", {}).get("account", "")),
         warehouse="PACIP_WH",
         database="PACIP_DB",
         schema="ANALYTICS"
