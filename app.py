@@ -16,10 +16,19 @@ st.set_page_config(
 # ── Snowflake connection ──────────────────────────────────────────────────────
 @st.cache_resource
 def get_connection():
+    # Use env vars on Render, fall back to secrets.toml for local dev
+    try:
+        user = os.environ["SNOWFLAKE_USER"]
+        password = os.environ["SNOWFLAKE_PASSWORD"]
+        account = os.environ["SNOWFLAKE_ACCOUNT"]
+    except KeyError:
+        user = st.secrets["snowflake"]["user"]
+        password = st.secrets["snowflake"]["password"]
+        account = st.secrets["snowflake"]["account"]
     return snowflake.connector.connect(
-        user=os.environ.get("SNOWFLAKE_USER", st.secrets.get("snowflake", {}).get("user", "")),
-        password=os.environ.get("SNOWFLAKE_PASSWORD", st.secrets.get("snowflake", {}).get("password", "")),
-        account=os.environ.get("SNOWFLAKE_ACCOUNT", st.secrets.get("snowflake", {}).get("account", "")),
+        user=user,
+        password=password,
+        account=account,
         warehouse="PACIP_WH",
         database="PACIP_DB",
         schema="ANALYTICS"
