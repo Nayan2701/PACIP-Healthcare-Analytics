@@ -33,7 +33,7 @@ Every US health payer is building this infrastructure right now. PACIP is a prod
 ## Screenshots
 
 ### AWS Step Functions — Pipeline execution (all 14 states green)
-![Step Functions](screenshots/step_functions_pipeline.png)
+![Step Functions](screenshots/step_function_pipeline.png)
 
 ### PA Compliance Scorecard — 453,771 PA requests · $390M revenue at risk
 ![Compliance Scorecard](screenshots/dashboard_compliance_scorecard.png)
@@ -42,7 +42,7 @@ Every US health payer is building this infrastructure right now. PACIP is a prod
 ![Revenue at Risk](screenshots/dashboard_revenue_at_risk.png)
 
 ### Payer Benchmarks — Anthem #1 at 79.5% · market avg 74.4%
-![Payer Benchmarks](screenshots/dashboard_payer_benchmarks.png)
+![Payer Benchmarks](screenshots/dashboard_payer_benchmark.png)
 
 ### High Risk PA Explorer — 1,682 UnitedHealthcare HIGH-risk PAs · avg risk score 0.865
 ![High Risk PA](screenshots/dashboard_high_risk_pa.png)
